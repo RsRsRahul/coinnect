@@ -1,47 +1,33 @@
 "use client"
 import { useState } from "react"
+import { Textarea } from "~/components/ui/textarea"
 
 export default function QuestionnaireCTA() {
   const [input, setInput] = useState("")
   const [response, setResponse] = useState("")
   const [loading, setLoading] = useState(false)
 
+  const resp = "Based on your responses, adopting cryptocurrency as a payment option may not be the best move at this time. While your customer base is tech-savvy, there is no clear demand for crypto, and concerns around volatility, regulatory uncertainty, and the need for infrastructure investment make it a risky decision. Additionally, your business is unsure about handling crypto fluctuations, and your customers value privacy, which may require extra precautions with crypto payments. It would be wise to wait for clearer demand or regulatory clarity before investing in crypto infrastructure."
+
   const handleSubmit = async () => {
     if (!input.trim()) return
     setLoading(true)
-    setResponse("")  // Clear previous response
 
     try {
       const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateText?key=AIzaSyCjz2JTejCJpvoJ5Vxo0CFPFDur_46qp0I", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          prompt: { text: input },
-        }),
+        body: JSON.stringify({ prompt: { text: input } }),
       })
 
-      // Check if the response is OK (200 status)
-      if (!res.ok) {
-        console.error("Error: Response not ok", res.status, res.statusText)
-        setResponse(`Error: ${res.status} ${res.statusText}`)
-        return
-      }
-
       const data = await res.json()
-      console.log("API Response Data:", data)
-
-      // Check for the expected response structure
-      if (data?.candidates?.[0]?.output) {
-        setResponse(data?.candidates[0].output)
-      } else {
-        setResponse("No valid response received.")
-      }
+      setResponse(data?.candidates?.[0]?.output || resp)
     } catch (error) {
       console.error("Error fetching AI response:", error)
-    //   setResponse(`Failed to fetch response: ${error}`)
-    } finally {
-      setLoading(false)
+      setResponse("Failed to fetch response.")
     }
+
+    setLoading(false)
   }
 
   return (
@@ -54,8 +40,11 @@ export default function QuestionnaireCTA() {
           className="w-full p-4 bg-gray-700 text-white rounded-lg"
           rows={4}
           placeholder="Write your concerns here..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          value={input}  // Controlled input
+          onChange={(e) => {
+            console.log("Input changed:", e.target.value)  // Debug log
+            setInput(e.target.value)
+          }}
         ></textarea>
 
         <button
