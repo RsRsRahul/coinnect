@@ -7,9 +7,7 @@ export default function QuestionnaireCTA() {
   const [response, setResponse] = useState("")
   const [loading, setLoading] = useState(false)
 
-  const resp = "Based on your responses, adopting cryptocurrency as a payment option may not be the best move at this time. While your customer base is tech-savvy, there is no clear demand for crypto, and concerns around volatility, regulatory uncertainty, and the need for infrastructure investment make it a risky decision. Additionally, your business is unsure about handling crypto fluctuations, and your customers value privacy, which may require extra precautions with crypto payments. It would be wise to wait for clearer demand or regulatory clarity before investing in crypto infrastructure."
-
-  const handleSubmit = async () => {
+    const handleSubmit = async () => {
     if (!input.trim()) return
     setLoading(true)
 
@@ -21,7 +19,7 @@ export default function QuestionnaireCTA() {
       })
 
       const data = await res.json()
-      setResponse(data?.candidates?.[0]?.output || resp)
+      setResponse(data?.candidates?.[0]?.output || "No response from AI")
     } catch (error) {
       console.error("Error fetching AI response:", error)
       setResponse("Failed to fetch response.")
