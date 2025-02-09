@@ -27,7 +27,7 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    DATABASE_URL: process.env.DATABASE_URL,
+    DATABASE_URL: "prisma+postgres://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNDgwNWZjNmQtZTk2OC00ZGRlLWI5ZjgtZWJkZDY3ZmY5NTM0IiwidGVuYW50X2lkIjoiNjQ0ODM2ZWRkOWU1MzdmMTU2ZDgzY2QxNWIxNDRmNjhiOTY1OGJlYWU5MTc1ZGI1MjQzNzRkNmIyNTRiM2MwZiIsImludGVybmFsX3NlY3JldCI6IjUzNzNkNmM2LTY3YTktNGNiZC1hYzhiLWE5NTI2ZGNlMTE2OCJ9.gR2msiNAIeCwnD4F59QDRP3Y7i_5Yxrut8eKxlZF_VQ",
     NODE_ENV: process.env.NODE_ENV,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },

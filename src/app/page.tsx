@@ -1,53 +1,92 @@
-import Link from "next/link";
+import Image from "next/image"
+import ParticleBackground from "./_components/particle-background"
+import FloatingNav from "./_components/floating-nav"
+import GlowingButton from "./_components/glowing-button"
+import FAQSection from "./_components/faq-section"
 
-import { LatestPost } from "~/app/_components/post";
-import { api, HydrateClient } from "~/trpc/server";
-
-export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
-
-  void api.post.getLatest.prefetch();
-
+export default function Home() {
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-          </h1>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/usage/first-steps"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">First Steps →</h3>
-              <div className="text-lg">
-                Just the basics - Everything you need to know to set up your
-                database and authentication.
-              </div>
-            </Link>
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/introduction"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">Documentation →</h3>
-              <div className="text-lg">
-                Learn more about Create T3 App, the libraries it uses, and how
-                to deploy it.
-              </div>
-            </Link>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello ? hello.greeting : "Loading tRPC query..."}
-            </p>
-          </div>
+    <div className="min-h-screen bg-gray-950 text-white overflow-hidden">
+      <ParticleBackground />
+      <FloatingNav />
 
-          <LatestPost />
-        </div>
+      <main className="relative z-10">
+        <section className="h-screen flex items-center justify-center">
+          <div className="text-center space-y-8">
+            <h1 className="text-6xl font-bold mb-4 animate-pulse">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
+                Welcome to Coinnect
+              </span>
+            </h1>
+            <p className="text-xl mb-8 max-w-2xl mx-auto text-gray-300">
+              Empowering small businesses to thrive in the world of crypto e-commerce
+            </p>
+            <p className="text-3xl font-semibold text-blue-400 mb-8">Why should you coinnect with crypto?</p>
+            <GlowingButton>Get Started</GlowingButton>
+          </div>
+        </section>
+
+        <section className="py-20 bg-black bg-opacity-30 backdrop-blur-md">
+          <div className="container mx-auto px-4">
+            <h2 className="text-4xl font-bold mb-12 text-center">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
+                Revolutionize Your Business
+              </span>
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { title: "Lightning-Fast Transactions", icon: "⚡" },
+                { title: "Global Reach, Local Feel", icon: "🌍" },
+                { title: "Minimal Fees, Maximum Profit", icon: "💰" },
+              ].map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-900 p-6 rounded-lg shadow-lg hover:shadow-blue-500/50 transition-shadow duration-300"
+                >
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h3 className="text-xl font-semibold mb-2 text-blue-400">{feature.title}</h3>
+                  <p className="text-gray-400">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <FAQSection />
+
+        <section className="py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl font-bold mb-8">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
+                Join the Crypto Revolution
+              </span>
+            </h2>
+            <p className="text-xl mb-12 max-w-2xl mx-auto text-gray-300">
+              Connect your business to the future of finance and unlock limitless possibilities
+            </p>
+            <div className="relative w-full max-w-3xl mx-auto">
+              <Image
+                src="/placeholder.svg?height=400&width=800"
+                alt="Crypto illustration"
+                width={800}
+                height={400}
+                className="rounded-lg shadow-2xl"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-green-500 opacity-20 rounded-lg"></div>
+            </div>
+          </div>
+        </section>
       </main>
-    </HydrateClient>
-  );
+
+      <footer className="bg-black bg-opacity-30 backdrop-blur-md py-8 mt-16">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-gray-400">&copy; 2025 Coinnect. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  )
 }
+
