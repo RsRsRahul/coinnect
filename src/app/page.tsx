@@ -4,6 +4,7 @@ import FloatingNav from "./_components/floating-nav"
 import GlowingButton from "./_components/glowing-button"
 import FAQSection from "./_components/faq-section"
 
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-950 text-white overflow-hidden">
@@ -29,7 +30,7 @@ export default function Home() {
         <section className="py-20 bg-black bg-opacity-30 backdrop-blur-md">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold mb-12 text-center">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400" >
                 Revolutionize Your Business
               </span>
             </h2>
@@ -60,7 +61,7 @@ export default function Home() {
         <section className="py-20">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl font-bold mb-8">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400" >
                 Join the Crypto Revolution
               </span>
             </h2>
@@ -68,13 +69,21 @@ export default function Home() {
               Connect your business to the future of finance and unlock limitless possibilities
             </p>
             <div className="relative w-full max-w-3xl mx-auto">
-              <Image
+              {/* <Image
                 src="/placeholder.svg?height=400&width=800"
                 alt="Crypto illustration"
                 width={800}
                 height={400}
                 className="rounded-lg shadow-2xl"
-              />
+              /> */}
+             <iframe
+  className="rounded-lg shadow-2xl w-full h-[400px]"
+  src="https://www.youtube.com/embed/Qm_S91glKZs?autoplay=1&mute=1&controls=1&loop=1&playlist=Qm_S91glKZs&cc_load_policy=1"
+  title="Crypto Revolution Video"
+  allow="autoplay; encrypted-media; picture-in-picture"
+  allowFullScreen
+></iframe>
+
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-green-500 opacity-20 rounded-lg"></div>
             </div>
           </div>
