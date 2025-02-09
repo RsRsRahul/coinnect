@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react"
 import { Button } from "../../components/ui/button"
 import LoginDialog from "./login-dialog"
+import { number } from "zod"
 
 const FloatingNav = () => {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [loginUser, setLoginUser] = useState();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +35,10 @@ const FloatingNav = () => {
           <Button variant="ghost" className="text-gray-300 hover:text-blue-400 transition-colors">
            <a href="#about"> About</a>
           </Button> */}
-          <LoginDialog />
+            <Button variant="ghost" className="text-gray-300 hover:text-blue-400 transition-colors">
+              <a href="/dashboard">Dashboard</a>
+            </Button>
+            <LoginDialog/>
         </div>
       </div>
     </nav>

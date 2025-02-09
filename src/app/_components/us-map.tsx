@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { ComposableMap, Geographies, Geography } from "react-simple-maps"
 import { scaleQuantize, scaleThreshold } from "d3-scale"
+import { randomInt } from "crypto"
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json"
 
@@ -97,7 +98,7 @@ export function USMap() {
               return (
                 <Geography
                   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                  key={geo.properties.postal}
+                  key={Math.random()}
                   geography={geo}
                   fill={fillColor}
                   stroke="#1f2937"

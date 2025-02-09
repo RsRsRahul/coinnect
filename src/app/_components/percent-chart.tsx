@@ -13,10 +13,11 @@ export function PercentageChart({ value, title, color }: PercentageChartProps) {
     { name: "Complete", value: value },
     { name: "Remaining", value: 100 - value },
   ]
+  
 
   return (
     <div className="p-6 bg-gray-800/50 backdrop-blur rounded-lg shadow-lg">
-      <h3 className="text-sm text-muted-foreground mb-4">{title}</h3>
+      <h2 className="text-md text-center mb-4">{title}</h2>
       <div className="h-[100px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>

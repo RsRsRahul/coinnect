@@ -3,12 +3,12 @@
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Tooltip, Legend } from "recharts"
 
 const data = [
-  { month: "Jan", metropolitan: 65, rural: 35 },
-  { month: "Feb", metropolitan: 68, rural: 32 },
-  { month: "Mar", metropolitan: 72, rural: 28 },
-  { month: "Apr", metropolitan: 75, rural: 25 },
-  { month: "May", metropolitan: 78, rural: 22 },
-  { month: "Jun", metropolitan: 82, rural: 18 },
+  { month: "Jan", metropolitan: 45, rural: 35 },
+  { month: "Feb", metropolitan: 55, rural: 32 },
+  { month: "Mar", metropolitan: 43, rural: 28 },
+  { month: "Apr", metropolitan: 20, rural: 25 },
+  { month: "May", metropolitan: 40, rural: 22 },
+  { month: "Jun", metropolitan: 30, rural: 18 },
 ]
 
 export function OverlappingBarChart() {
@@ -27,8 +27,8 @@ export function OverlappingBarChart() {
             }}
           />
           <Legend />
-          <Bar name="Metropolitan" dataKey="metropolitan" fill="rgb(94, 108, 132)" radius={[0, 4, 4, 0]} />
-          <Bar name="Rural" dataKey="rural" fill="rgb(54, 60, 82)" radius={[0, 4, 4, 0]} />
+          <Bar name="With Crypto" dataKey="metropolitan" fill="rgb(94, 108, 132)" radius={[0, 4, 4, 0]} />
+          <Bar name="Without Crypto" dataKey="rural" fill="rgb(54, 60, 82)" radius={[0, 4, 4, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

@@ -21,7 +21,7 @@ model login {
     @@index([name])
 }
 
-model transactionDetails {
+model transactionDetail {
     transactionId Int     @id @default(autoincrement())
     bId           Int
     amount        Float

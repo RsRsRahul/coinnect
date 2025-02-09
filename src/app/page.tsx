@@ -46,10 +46,6 @@ export default function Home() {
                 >
                   <div className="text-4xl mb-4">{feature.icon}</div>
                   <h3 className="text-xl font-semibold mb-2 text-blue-400">{feature.title}</h3>
-                  <p className="text-gray-400">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                  </p>
                 </div>
               ))}
             </div>

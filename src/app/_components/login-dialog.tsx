@@ -12,13 +12,25 @@ import {
 } from "../../components/ui/dialog"
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
+import { api } from "~/trpc/react"
 
 export default function LoginDialog() {
-  const [open, setOpen] = useState(false)
+  const login = api.post.login.useMutation();
+  const [open, setOpen] = useState(false);
+  const [loginflag, setLoginFlag] = useState(false);
+  const [data, setData] = useState<{ name: string; password: string; id: number; uName: string; bId: number; createdAt: Date } | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle login logic here
+    const uname = (e.target as HTMLFormElement).elements.namedItem("email") as HTMLInputElement
+    const password = (e.target as HTMLFormElement).elements.namedItem("password") as HTMLInputElement
+    login.mutateAsync({ name: uname.value, password: password.value }).then((res) => {
+      localStorage.setItem("user", JSON.stringify(res));
+      console.log(res);
+      setLoginFlag(res?.bId !== undefined);
+    }).catch((err) => {
+      console.log(err);
+    });
     console.log("Login submitted")
     setOpen(false)
   }
@@ -47,7 +59,7 @@ export default function LoginDialog() {
             </Label>
             <Input
               id="email"
-              type="email"
+              type="text"
               placeholder="Enter your email"
               required
               className="bg-gray-800 border-gray-700 text-white"
