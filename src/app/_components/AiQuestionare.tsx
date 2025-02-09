@@ -12,7 +12,7 @@ export default function QuestionnaireCTA() {
     setResponse("")  // Clear previous response
 
     try {
-      const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateText?key=YOUR_API_KEY", {
+      const res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateText?key=AIzaSyCjz2JTejCJpvoJ5Vxo0CFPFDur_46qp0I", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
