@@ -6,15 +6,36 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
-    url      = env("DATABASE_URL")
+    provider = "postgresql"
+    url      = "prisma+postgres://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNDgwNWZjNmQtZTk2OC00ZGRlLWI5ZjgtZWJkZDY3ZmY5NTM0IiwidGVuYW50X2lkIjoiNjQ0ODM2ZWRkOWU1MzdmMTU2ZDgzY2QxNWIxNDRmNjhiOTY1OGJlYWU5MTc1ZGI1MjQzNzRkNmIyNTRiM2MwZiIsImludGVybmFsX3NlY3JldCI6IjUzNzNkNmM2LTY3YTktNGNiZC1hYzhiLWE5NTI2ZGNlMTE2OCJ9.gR2msiNAIeCwnD4F59QDRP3Y7i_5Yxrut8eKxlZF_VQ"
 }
 
-model Post {
+model login {
     id        Int      @id @default(autoincrement())
+    uName     String
+    password  String
+    bId       Int
     name      String
     createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
 
     @@index([name])
+}
+
+model transactionDetails {
+    transactionId Int     @id @default(autoincrement())
+    bId           Int
+    amount        Float
+    transtype     String
+    productType   String
+    geograhicLocation String
+    createdAt     DateTime @default(now())
+}
+
+model business {
+    bId        Int      @id @default(autoincrement())
+    bName      String
+    bType      String
+    AvgRevenue Float
+    bLocation  String
+    createdAt  DateTime @default(now())
 }
